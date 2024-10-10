@@ -1,6 +1,6 @@
 # huskyでdevelop前に確認メッセージを出す
 
-# nodeenvを入れる
+# nodenvを入れる
 ```
 brew install nodenv
 brew install node-build
