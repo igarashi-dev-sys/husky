@@ -1,13 +1,14 @@
 #!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
+. "$(dirname -- "$0")/_/husky.sh"
 
 # リモートのブランチ名を取得
 while read local_ref local_sha remote_ref remote_sha
 do
   # develop ブランチへの push を確認
   if [[ "$remote_ref" =~ /develop$ ]]; then
+    # 対話形式で確認
     echo "確認: develop ブランチへの push が検出されました。続行しますか？ (y/n)"
-    read answer
+    read -r answer < /dev/tty
     if [ "$answer" != "y" ]; then
       echo "エラー: develop ブランチへの push は中止されました。"
       exit 1
