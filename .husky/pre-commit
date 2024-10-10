@@ -1,6 +1,0 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
-
-# check-branch.sh を実行
-.husky/check-branch.sh
