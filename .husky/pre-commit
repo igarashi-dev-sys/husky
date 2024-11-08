@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# 現在のブランチ名を取得
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+# 環境が "dumb"（GUI 環境）かどうかをチェック
+if [ "$TERM" = "dumb" ]; then
+  echo "GUI 環境でのコミットを検出しました。確認をスキップします。"
+  exit 0
+fi
+
+# コマンドラインからのコミットでは確認を行う
+echo "現在のブランチ: $current_branch"
+echo "このブランチにコミットしてもよろしいですか？ (y/n)"
+read -r answer < /dev/tty
+if [ "$answer" != "y" ]; then
+  echo "ブランチへのコミットは中止されました。"
+  exit 1
+fi
+
+# 続行
+exit 0
